@@ -4,19 +4,8 @@
   box-sizing: inherit;
 }
 
-.hero{
-  
-  width: 100%;
-margin-top: -200px;
-text-align: center;
-}
-.title{
-font-size: 5rem;
-font-weight: bolder;
-color: white;
-}
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; /* 1rem = 10px for easier calculations */
   box-sizing: border-box;
 }
 
@@ -24,39 +13,47 @@ body {
   font-family: sans-serif;
   color: #333;
   line-height: 1.5;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* Align content to the left */
   justify-content: center;
   background: linear-gradient(to top left, #28b487, #7dd56f);
-  background-image: url(1000_F_100227567_VJ0utCXtFQPaWnb.png);
+  background-image: url(/1000_F_100227567_VJ0utCXtFQPaWnb.png);
   background-size: cover;
-  
+  background-position: center;
 }
 
-.show-modal {
-  font-size: 2rem;
-  font-weight: 600;
-  padding: 1.75rem 3.5rem;
-  margin: 5rem 2rem;
-  border: none;
-  background-color: #fff;
-  color: #444;
-  border-radius: 10rem;
-  cursor: pointer;
+.hero {
+  width: 100%;
+  text-align: center; /* Center the title */
+  margin-top: -10rem; /* Adjusted for better mobile fit */
 }
+
+.title {
+  font-size: 5rem;
+  font-weight: bolder;
+  color: white;
+}
+
+.show-modal,
 .show-modal-2 {
   font-size: 2rem;
   font-weight: 600;
   padding: 1.75rem 3.5rem;
-  margin: 5rem 2rem;
+  margin: 5rem 2rem; /* Original margin for left alignment */
   border: none;
   background-color: #fff;
   color: #444;
   border-radius: 10rem;
   cursor: pointer;
+  transition: transform 0.2s; /* Smooth scaling on touch */
+}
+
+.show-modal:active,
+.show-modal-2:active {
+  transform: scale(0.95); /* Visual feedback for touch */
 }
 
 .close-modal {
@@ -79,28 +76,24 @@ p {
   font-size: 1.8rem;
 }
 
-/* -------------------------- */
-/* CLASSES TO MAKE MODAL WORK */
-.hidden {
-  display: none;
-}
-
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-
+  max-width: 90rem; /* Limit max width for large screens */
   background-color: white;
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
+  overflow-y: auto; /* Allow scrolling for long content */
+  max-height: 80vh; /* Prevent modal from exceeding viewport height */
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -110,24 +103,195 @@ p {
   z-index: 5;
 }
 
-.foward {
-  padding: 1rem 2rem;
-  border-radius: 10rem;
-  border: none;
-  background-color: #fff;
-  color: #444;
-  cursor: pointer;
-  border: 1px solid #444;
-  margin-right: 1rem;
-  margin-top: 1rem;
-}
-
+.foward,
 .back {
   padding: 1rem 2rem;
   border-radius: 10rem;
-  border: none;
+  border: 1px solid #444;
   background-color: #fff;
   color: #444;
-  cursor: pointer;  
-  border: 1px solid #444;
+  cursor: pointer;
+  margin: 1rem 0.5rem 0 0.5rem;
+  font-size: 1.6rem;
+  transition: transform 0.2s;
+}
+
+.foward:active,
+.back:active {
+  transform: scale(0.95);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Small devices (phones, up to 576px) */
+@media (max-width: 576px) {
+  html {
+    font-size: 50%; /* Reduce base font size for smaller screens */
+  }
+
+  .hero {
+    margin-top: -5rem; /* Less negative margin for smaller screens */
+  }
+
+  .title {
+    font-size: 3.5rem; /* Smaller title for mobile */
+  }
+
+  .show-modal,
+  .show-modal-2 {
+    font-size: 1.6rem;
+    padding: 1.5rem 2.5rem;
+    margin: 3rem 1rem; /* Adjusted margin for mobile, still left-aligned */
+  }
+
+  .modal {
+    width: 90%; /* Full width for small screens */
+    padding: 3rem; /* Reduced padding */
+    max-height: 85vh; /* Slightly more room for content */
+  }
+
+  .close-modal {
+    font-size: 3.5rem; /* Smaller close button */
+    top: 0.8rem;
+    right: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+
+  .foward,
+  .back {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Medium devices (tablets, 577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  html {
+    font-size: 56.25%; /* Slightly larger base font size */
+  }
+
+  .hero {
+    margin-top: -8rem;
+  }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .show-modal,
+  .show-modal-2 {
+    font-size: 1.8rem;
+    padding: 1.5rem 3rem;
+    margin: 4rem 1.5rem; /* Slightly adjusted for tablets */
+  }
+
+  .modal {
+    width: 80%;
+    padding: 4rem;
+  }
+
+  .close-modal {
+    font-size: 4rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  p {
+    font-size: 1.7rem;
+  }
+
+  .foward,
+  .back {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Large devices (desktops, 769px to 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  html {
+    font-size: 60%; /* Slightly smaller than default for better fit */
+  }
+
+  .hero {
+    margin-top: -10rem;
+  }
+
+  .title {
+    font-size: 4.5rem;
+  }
+
+  .show-modal,
+  .show-modal-2 {
+    font-size: 1.9rem;
+    margin: 5rem 2rem; /* Original margin */
+  }
+
+  .modal {
+    width: 75%;
+    padding: 5rem;
+  }
+
+  .foward,
+  .back {
+    font-size: 1.6rem;
+  }
+}
+
+/* Extra large devices (large desktops, above 992px) */
+@media (min-width: 993px) {
+  .modal {
+    width: 70%;
+    max-width: 90rem;
+  }
+
+  .hero {
+    margin-top: -10rem;
+  }
+
+  .title {
+    font-size: 5rem;
+  }
+
+  .show-modal,
+  .show-modal-2 {
+    margin: 5rem 2rem; /* Original margin */
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-width: 576px) and (orientation: landscape) {
+  .modal {
+    width: 85%;
+    padding: 2.5rem;
+    max-height: 70vh; /* Reduced height for landscape */
+  }
+
+  .hero {
+    margin-top: -3rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .show-modal,
+  .show-modal-2 {
+    font-size: 1.4rem;
+    padding: 1.2rem 2rem;
+    margin: 2rem 1rem; /* Adjusted for landscape */
+  }
 }
