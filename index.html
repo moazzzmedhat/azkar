@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Modal window</title>
+  </head>
+  <body>
+    <div class="hero">
+      <h1 class="title">الاذكار</h1>
+    </div>
+    <button class="show-modal">اذكار الصباح</button>
+    <button class="show-modal-2">اذكار المساء</button>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1><span class="page">1</span>/31</h1>
+      <p class="modal-content">ابدا بالضغط على الزر التالي</p>
+      <button class="foward">Forward</button>
+      <button class="back">Back</button>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <script src="script.js" charset="utf-8" type="text/javascript"></script>
+  </body>
+</html>
