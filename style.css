@@ -20,6 +20,7 @@ body {
   align-items: flex-start; /* Align content to the left */
   justify-content: center;
   background: linear-gradient(to top left, #28b487, #7dd56f);
+   background-image: url(/1000_F_100227567_VJ0utCXtFQPaWnb.png);
   background-size: cover;
   background-position: center;
 }
